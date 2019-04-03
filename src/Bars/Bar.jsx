@@ -1,15 +1,25 @@
 import React,{Component} from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import './bar.css';
-import {Form} from 'react-bootstrap'
+import {Form,FormGroup, FormControl} from 'react-bootstrap'
+
+
+
 class Bar extends Component{
     constructor(props){
         super(props);
         this.state = {
             value_status1st:20,
             value_status2nd:30,
-            value_status3th:70
+            value_status3th:70,
+            status1:false,
+            status2:false,
+            status3:false
         }
+       
+    }
+    onpick(e){
+        console.log('[Onpick:]'+this.inputEl.value);
     }
     render(){
         return (
@@ -22,10 +32,16 @@ class Bar extends Component{
                 <Form>
                     <Form.Group controlId="exampleForm.ControlSelect1">
                         <Form.Label>Example select</Form.Label>
-                        <Form.Control as="select">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
+                        <Form.Control as="select"
+                            onChange={this.onpick.bind(this)}
+                            inputEl={el=>this.inputEl=el}
+                            placeholder="select"
+                            componentClass="select"
+                            >
+                        <option value="">select</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                         </Form.Control>
                     </Form.Group>
                     <button>-25</button>
