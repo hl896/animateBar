@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import ReactDom from 'react-dom';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import './bar.css';
 import {Form,FormGroup, FormControl} from 'react-bootstrap'
@@ -18,8 +19,41 @@ class Bar extends Component{
         }
        
     }
+    
     onpick(e){
-        console.log('[Onpick:]'+this.inputEl.value);
+        const getvalues = this.inputEl.value;
+        console.log('[Onpick:]'+getvalues);
+        if(getvalues=="1"){
+            
+            this.setState(prevState=>({ 
+                status1:!prevState.status1  
+            }));
+            console.log('status1:'+this.state.status1);
+        }else if(getvalues=="2"){
+            this.setState(prevState=>({ 
+                status2:!prevState.status2  
+            }));
+            console.log('status2:'+this.state.status2);
+                
+        }else if(getvalues=="3"){
+            this.setState(prevState=>({ 
+                status3:!prevState.status3  
+            }));
+            console.log('status3:'+this.state.status3)
+        }
+        else{
+            console.log('default-status:'+getvalues);
+            
+        }   
+    }
+    min_25(){
+        if(this.state.status1==true){
+            this.setState(prevalue=>{return {value_status1st:(prevalue.value_status1st-25)}});
+            console.log(this.state.value_status1st)
+        }else{
+
+        }
+        
     }
     render(){
         return (
@@ -34,7 +68,7 @@ class Bar extends Component{
                         <Form.Label>Example select</Form.Label>
                         <Form.Control as="select"
                             onChange={this.onpick.bind(this)}
-                            inputEl={el=>this.inputEl=el}
+                            ref={el=>this.inputEl=el}
                             placeholder="select"
                             componentClass="select"
                             >
@@ -44,10 +78,10 @@ class Bar extends Component{
                         <option value="3">3</option>
                         </Form.Control>
                     </Form.Group>
-                    <button>-25</button>
-                    <button>-10</button>
-                    <button>10</button>
-                    <button>25</button>
+                    <button type='button' onClick={this.min_25.bind(this)}>-25</button>
+                    <button >-10</button>
+                    <button >10</button>
+                    <button >25</button>
                 </Form>
                 
             </div>
