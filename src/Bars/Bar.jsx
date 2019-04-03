@@ -26,18 +26,24 @@ class Bar extends Component{
         if(getvalues=="1"){
             
             this.setState(prevState=>({ 
-                status1:!prevState.status1  
+                status1:!prevState.status1,
+                status2:false,
+                status3:false   
             }));
             console.log('status1:'+this.state.status1);
         }else if(getvalues=="2"){
             this.setState(prevState=>({ 
-                status2:!prevState.status2  
+                status2:!prevState.status2,
+                status1:false,
+                status3:false  
             }));
             console.log('status2:'+this.state.status2);
                 
         }else if(getvalues=="3"){
             this.setState(prevState=>({ 
-                status3:!prevState.status3  
+                status3:!prevState.status3  ,
+                status1:false,
+                status2:false  
             }));
             console.log('status3:'+this.state.status3)
         }
@@ -58,10 +64,15 @@ class Bar extends Component{
     render(){
         return (
             <div >
+                <link rel="stylesheet" 
+                href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+                integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+                crossorigin="anonymous"/>
+    
                 <div>
-                    <ProgressBar animated className='singleBar' id='first' striped variant="success" now={this.state.value_status1st} label={`${this.props.value_status1st}%`}/>
+                    <ProgressBar animated className='singleBar' id='first' striped variant="success" now={this.state.value_status1st} label={this.state.value_status1st+'%'}/>
                     <ProgressBar animated className='singleBar' id='second' striped variant="warning" now={this.state.value_status2nd} label={`${this.state.value_status2nd}%`}/>
-                    <ProgressBar animated className='singleBar' id='third' striped variant="info" now={this.state.value_status3th} label={`${this.props.value_status3th}%`}/>
+                    <ProgressBar animated className='singleBar' id='third' striped variant="info" now={this.state.value_status3th} label={`${this.state.value_status3th}%`}/>
                 </div>
                 <Form>
                     <Form.Group controlId="exampleForm.ControlSelect1">
