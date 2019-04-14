@@ -18,10 +18,9 @@ class Bar extends Component{
             status2:false,
             status3:false,
 
-            btnval1:(-25),
-            btnval2:(-10),
-            btnval3:(10),
-            btnval4:(35),
+            texts:this.props.texts,
+
+            
 
             error: null,
             isLoaded: false,
@@ -70,8 +69,6 @@ class Bar extends Component{
     }
     
     min_25(btn1){
-        
-
             if(this.state.status1==true){
                 if(this.state.value_status1st>=btn1&&this.state.value_status1st-btn1<150){
                    
@@ -126,17 +123,23 @@ class Bar extends Component{
         const updatestyles={
             width:this.state.value_status1st
         }
-        let btn1 =this.state.btnval1;
-        let btn2 =this.state.btnval2;
-        let btn3 =this.state.btnval3;
-        let btn4 =this.state.btnval4;
-        
+        let texts= this.state.texts;
+        let btn1, btn2, btn3,btn4 ='';
+        // texts.map(text=>(
+        //     btn1 =text.buttons[0],
+        //     btn2 = text.buttons[1],
+        //     btn3 = text.buttons[2],
+        //     btn4 = text.buttons[3]
+        // ))
+
+        console.log('texts:'+texts);
+        console.log('btn1:'+btn1)
+        console.log('type:'+typeof(btn1));
         if(btn1<0||btn2<0||btn3<0||btn4<0){
             btn1=(-btn1);
             btn2=(-btn2);
             btn3=(-btn3);
-            btn4=(-btn4);
-            
+            btn4=(-btn4); 
         }
 
         return (
@@ -166,10 +169,11 @@ class Bar extends Component{
                         <option value="3">3</option>
                         </Form.Control>
                     </Form.Group>
-                    <button type='button' onClick={()=>this.min_25(btn1)} >-25</button>
-                    <button type='button' onClick={()=>this.min_25(btn2)}>-10</button>
-                    <button type='button' onClick={()=>this.min_25(btn3)}>10</button>
-                    <button type='button' onClick={()=>this.min_25(btn4)}>35</button>  
+                    <p>here is :{texts}</p>
+                    <button type='button' onClick={()=>this.min_25(btn1)}>{btn1}</button>
+                    <button type='button' onClick={()=>this.min_25(btn2)}>{btn2}</button>
+                    <button type='button' onClick={()=>this.min_25(btn3)}>{btn3}</button>
+                    <button type='button' onClick={()=>this.min_25(btn4)}>{btn4}</button>  
                 </Form>
                 
             </div>
