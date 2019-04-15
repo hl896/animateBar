@@ -10,9 +10,9 @@ class Bar extends Component{
     constructor(props){
         super(props);
         this.state = {
-            value_status1st:this.props.value_status1st,
-            value_status2nd:this.props.value_status2nd,
-            value_status3th:this.props.value_status3th,
+            value_status1st:this.props.data.bars[0],
+            value_status2nd:this.props.data.bars[1],
+            value_status3th:this.props.data.bars[2],
 
             status1:false,
             status2:false,
@@ -133,6 +133,7 @@ class Bar extends Component{
         }
         let texts= this.state.texts;
         let btn1, btn2, btn3,btn4 ='';
+        
         // texts.map(text=>(
         //     btn1 =text.buttons[0],
         //     btn2 = text.buttons[1],
@@ -149,6 +150,9 @@ class Bar extends Component{
         console.log('btn1:'+btn3);
         btn4=texts.buttons[3];
         console.log('btn1:'+btn4);
+
+        
+        
         // if(btn1<0){
         //     btn1=(-btn1);
         // }else if(btn1>=0){
