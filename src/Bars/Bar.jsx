@@ -18,9 +18,7 @@ class Bar extends Component{
             status2:false,
             status3:false,
 
-            texts:this.props.texts,
-
-            
+            texts:this.props.data,
 
             error: null,
             isLoaded: false,
@@ -70,40 +68,50 @@ class Bar extends Component{
     
     min_25(btn1){
             if(this.state.status1==true){
-                if(this.state.value_status1st>=btn1&&this.state.value_status1st-btn1<150){
+                if(this.state.value_status1st+btn1>=0&&this.state.value_status1st+btn1<150){
                    
                     this.setState(
                     
-                        prevalue=>{return {value_status1st:(prevalue.value_status1st-btn1)}}
+                        prevalue=>{return {value_status1st:(prevalue.value_status1st+btn1)}}
                     );
                     
                     
                     
-                }else if(this.state.value_status1st-btn1>=150){
+                }else if(parseInt(this.state.value_status1st)+parseInt(btn1)>=150){
+                    console.log('path1...')
+                    console.log('result paths1:'+parseInt(this.state.value_status1st)+parseInt(btn1))
                     this.setState(prevalue=>{return {value_status1st:150}});
                 }
                 else{
+                    console.log('paths3...')
+                    console.log('result paths3:'+parseInt(this.state.value_status1st)+parseInt(btn1))
                     this.setState(prevalue=>{return {value_status1st:0}});
                 }
                     
                 
                 console.log(this.state.value_status1st)
             }else if(this.state.status2==true){
-                if(this.state.value_status2nd>=btn1&&this.state.value_status2nd-btn1<150){
-                    this.setState(prevalue=>{return {value_status2nd:(prevalue.value_status2nd-btn1)}});
-                }else if(this.state.value_status2nd-btn1>=150){
+                if(this.state.value_status2nd+btn1>=0&&this.state.value_status2nd+btn1<150){
+                    this.setState(prevalue=>{return {value_status2nd:(prevalue.value_status2nd+btn1)}});
+                }else if(parseInt(this.state.value_status2nd)+parseInt(btn1)>=150){
+                    console.log('path2....')
+                    console.log('result paths2:'+parseInt(this.state.value_status2nd)+parseInt(btn1))
+                    
                     this.setState(prevalue=>{return {value_status2nd:150}});
                 }
                 else{
+                    console.log('paths4...')
+                    console.log('result paths4:'+parseInt(this.state.value_status2nd)+parseInt(btn1))
+                    
                     this.setState(prevalue=>{return {value_status2nd:0}});
                 }
                     
                 
                 console.log(this.state.value_status2nd)
             }else if(this.state.status3==true){
-                if(this.state.value_status3th>=btn1&&this.state.value_status3th-btn1<150){
-                    this.setState(prevalue=>{return {value_status3th:(prevalue.value_status3th-btn1)}});
-                }else if(this.state.value_status3th-btn1>=150){
+                if(this.state.value_status3th+btn1>=0&&this.state.value_status3th+btn1<150){
+                    this.setState(prevalue=>{return {value_status3th:(prevalue.value_status3th+btn1)}});
+                }else if(this.state.value_status3th+btn1>=150){
                     this.setState(prevalue=>{return {value_status3th:150}});
                 }
                 else{
@@ -133,14 +141,34 @@ class Bar extends Component{
         // ))
 
         console.log('texts:'+texts);
-        console.log('btn1:'+btn1)
-        console.log('type:'+typeof(btn1));
-        if(btn1<0||btn2<0||btn3<0||btn4<0){
-            btn1=(-btn1);
-            btn2=(-btn2);
-            btn3=(-btn3);
-            btn4=(-btn4); 
-        }
+        btn1=texts.buttons[0];
+        console.log('btn1:'+btn1);
+        btn2=texts.buttons[1];
+        console.log('btn1:'+btn2);
+        btn3=texts.buttons[2];
+        console.log('btn1:'+btn3);
+        btn4=texts.buttons[3];
+        console.log('btn1:'+btn4);
+        // if(btn1<0){
+        //     btn1=(-btn1);
+        // }else if(btn1>=0){
+        //     btn1=btn1;
+        // }
+        // if(btn2<0){
+        //     btn2=(-btn2);
+        // }else if(btn2>=0){
+        //     btn2=btn2
+        // }
+        // if(btn3<0){
+        //     btn3=(-btn3);
+        // } else if(btn3>=0){
+        //     btn3=btn3;
+        // }
+        // if(btn4<0) {
+        //     btn4=(-btn4); 
+        // }else if(btn4>=0){
+        //     btn4=btn4;
+        // }
 
         return (
             <div >
@@ -169,7 +197,7 @@ class Bar extends Component{
                         <option value="3">3</option>
                         </Form.Control>
                     </Form.Group>
-                    <p>here is :{texts}</p>
+                    
                     <button type='button' onClick={()=>this.min_25(btn1)}>{btn1}</button>
                     <button type='button' onClick={()=>this.min_25(btn2)}>{btn2}</button>
                     <button type='button' onClick={()=>this.min_25(btn3)}>{btn3}</button>

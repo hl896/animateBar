@@ -38,9 +38,9 @@ class App extends Component {
       console.log('app text is:'+texts);
       return (
         <div className="App">
-          <Bar value_status1st='60'
-              value_status2nd='50'
-              value_status3th='80'
+          <Bar value_status1st={60}
+              value_status2nd={50}
+              value_status3th={80}
               data={texts}
               >
           </Bar> 
